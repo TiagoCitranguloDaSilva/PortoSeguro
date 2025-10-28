@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "./EtiquetaForm.css"
 
-function NovaEtiquetaForm({aoEnviar, editarEtiqueta}){
+function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
 
     const [nomeEtiqueta, setNomeEtiqueta] = useState("")
     const [editBool, setEditBool] = useState(false)
@@ -28,6 +28,8 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta}){
         setNomeEtiqueta("")
     }
 
+    
+
     return(
         <div id="formEtiqueta">
             <form onSubmit={handleSubmit} autoComplete='off'>
@@ -37,7 +39,13 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta}){
 
                 <div className='botoes'>
                     <input type="submit" value="Salvar" />
-                    <button className='buttonApagar'>Apagar</button>
+                    <button className='buttonApagar' onClick={
+                        (e) => {
+                            e.preventDefault()
+                            aoClicar()
+                            fecharFormulario()
+                        }
+                        }>Apagar</button>
 
                 </div>
             </form>
