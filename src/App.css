@@ -51,6 +51,10 @@ h1{
     padding: 1em;
 }
 
+.historiasList{
+    padding: 1em;
+}
+
 .etiqueta, .historia{
     border: 1px solid gray;
     padding: .6em;
@@ -84,3 +88,8 @@ h1{
     cursor: pointer;
 }
 
+.historiasList{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}

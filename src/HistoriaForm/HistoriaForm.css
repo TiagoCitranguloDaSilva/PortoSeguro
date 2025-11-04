@@ -1,6 +1,6 @@
 
 
-#formEtiqueta{
+#formHistoria{
     position: absolute;
     backdrop-filter: blur(2px);
     width: 100svw;
@@ -12,42 +12,51 @@
 
 }
 
-#formEtiqueta h2{
+#formHistoria h2{
     text-align: center;
 }
 
-#formEtiqueta form{
+#formHistoria form{
+    width: 100svw;
+    height: 100svh;
     position: relative;
-    display: grid;
-    grid-template-rows: 1fr max-content 1fr;
-    align-items: center;
-    justify-content: center;
     gap: 2em;
     background-color: #f1f1f1;
-    width: max-content;
-    /* min-width: 25em;
-    min-height: 25em; */
-    max-width: 100%;
     padding: 5em;
     font-size: 1.3rem;
     border: 5px solid black;
+    display: grid;
+    grid-template-rows: max-content max-content 1fr max-content;
     
 }
 
-#formEtiqueta form p{
+#formHistoria form > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+select{
+    width: 10em;
+    height: 2em;
+    font-size: 1.2rem;
+    padding: 3px;
+    border-radius: 6px;
+}
+
+#formHistoria form p{
     display: flex;
     flex-direction: column;
     font-size: 1rem;
 }
 
-#formEtiqueta form p input{
+#formHistoria form p input{
     height: 2em;
     font-size: 1.2rem;
     border-radius: 6px;
     padding: 3px;
 }
 
-#formEtiqueta form input[type="submit"], .buttonApagar{
+#formHistoria form input[type="submit"], .buttonApagar{
     width: 5em;
     margin: auto;
     font-size: 1.2em;
@@ -60,7 +69,11 @@
     transition: transform .3s;
 }
 
-#formEtiqueta form input[type="submit"]:hover, .buttonApagar:hover{
+#formHistoria form input{
+    width: 12em;
+}
+
+#formHistoria form input[type="submit"]:hover, .buttonApagar:hover{
     transform: scale(1.05);
 }
 
@@ -84,5 +97,12 @@
 
 .buttonApagar{
     display: none;
+}
+
+
+textarea{
+    display: block;
+    height: 100%;
+    border-radius: 6px;
 }
 
