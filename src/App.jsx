@@ -56,7 +56,6 @@ function App() {
     setHistoriaSelecionada(null)
     setIdHistoria(-1)
     if (id != -1) {
-      console.log("AAAAAAAAAAAAAAAAAAA")
       setHistoriaSelecionada([historias[idEtiqueta][id], idEtiqueta])
       setIdHistoria(id)
       setIdEscolhaOriginal(idEtiqueta)
@@ -117,6 +116,31 @@ function App() {
 
   }
 
+  const handleCollapse = (id) => {
+    
+    if(document.querySelector(`#historiaHeader${id}`).classList.contains('collapsed')){
+      document.querySelector(`#historiaHeader${id}`).classList.remove('collapsed')
+      document.querySelector(`#historiaHeader${id}`).parentNode.querySelector(".historiasList").style.transform = "scaleY(1)";
+      document.querySelector(`#historiaHeader${id}`).parentNode.querySelector(".historiasList").style.display = "flex";
+    }else{
+      document.querySelector(`#historiaHeader${id}`).classList.add('collapsed')
+      document.querySelector(`#historiaHeader${id}`).parentNode.querySelector(".historiasList").style.transform = "scaleY(0)";
+      document.querySelector(`#historiaHeader${id}`).parentNode.querySelector(".historiasList").style.display = "none";
+    }
+  }
+
+  const collapseEtiqueta = () => {
+    if(document.querySelector(`#etiquetasHeader`).classList.contains('collapsed')){
+      document.querySelector(`#etiquetasHeader`).classList.remove('collapsed')
+      document.querySelector(`#etiquetasContainer`).style.transform = "scaleY(1)";
+      document.querySelector(`#etiquetasContainer`).style.display = "flex";
+    }else{
+      document.querySelector(`#etiquetasHeader`).classList.add('collapsed')
+      document.querySelector(`#etiquetasContainer`).style.transform = "scaleY(0)";
+      document.querySelector(`#etiquetasContainer`).style.display = "none";
+    }
+  }
+
 
 
   return (
@@ -127,7 +151,7 @@ function App() {
           <h2>Etiquetas</h2>
           <button onClick={() => handleShowEtiquetaForm()}>Nova etiqueta</button>
         </div>
-        <div id="etiquetasHeader">
+        <div id="etiquetasHeader" className="collapsed" onClick={collapseEtiqueta}>
           <h2>Etiquetas</h2>
         </div>
         <div id="etiquetasContainer">
@@ -147,17 +171,17 @@ function App() {
           <button onClick={() => handleShowHistoriaForm(-1)}>Nova história</button>
         </div>
         <div className="historias">
-          {etiquetas.map((etiqueta, key) => {
+          {etiquetas.map((etiqueta, keyEtiqueta) => {
             return(
               
-                <div className="historiaContainer" key={key}>
-                  <div className="historiaHeader">
+                <div className="historiaContainer" key={keyEtiqueta}>
+                  <div className="historiaHeader collapsed" id={"historiaHeader"+keyEtiqueta} onClick={() => handleCollapse(keyEtiqueta)}>
                     <h2>{etiqueta}</h2>
                   </div>
                   <div className="historiasList">
-                    {historias[key]?.map((historia, keyHistoria) => {
+                    {historias[keyEtiqueta]?.map((historia, keyHistoria) => {
                       return(
-                        <div className="historia" onClick={() => handleShowHistoriaForm(keyHistoria, key)}>
+                        <div className="historia" onClick={() => handleShowHistoriaForm(keyHistoria, keyEtiqueta)}>
                           <p key={keyHistoria}>{historia[0]}</p>
                         </div>
                       )
