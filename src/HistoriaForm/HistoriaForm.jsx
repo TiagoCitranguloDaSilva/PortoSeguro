@@ -45,7 +45,7 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
                         <select id="escolhaEtiqueta" onChange={(e) => setEscolha(document.querySelector("#escolhaEtiqueta").value)}>
                             {etiquetas.map((etiqueta, index) => {
                                 return(
-                                    <option value={index} key={index} selected={index == escolha}>{etiqueta}</option>
+                                    <option value={index} key={index} defaultValue={index == escolha}>{etiqueta}</option>
                                 )
                             })}
                         </select>

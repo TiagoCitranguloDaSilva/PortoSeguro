@@ -118,26 +118,31 @@ function App() {
 
   const handleCollapse = (id) => {
     
-    if(document.querySelector(`#historiaHeader${id}`).classList.contains('collapsed')){
-      document.querySelector(`#historiaHeader${id}`).classList.remove('collapsed')
-      document.querySelector(`#historiaHeader${id}`).parentNode.querySelector(".historiasList").style.transform = "scaleY(1)";
-      document.querySelector(`#historiaHeader${id}`).parentNode.querySelector(".historiasList").style.display = "flex";
+    let historiaList = document.querySelector(`#historiaHeader${id}`).parentNode.children[1]
+    let historiaHeader = document.querySelector(`#historiaHeader${id}`)
+    if(historiaList.classList.contains('collapsed')){
+      historiaList.classList.remove('collapsed')
+      historiaHeader.classList.remove("iconeUncollapse")
+      historiaHeader.classList.add("iconeCollapse")
     }else{
-      document.querySelector(`#historiaHeader${id}`).classList.add('collapsed')
-      document.querySelector(`#historiaHeader${id}`).parentNode.querySelector(".historiasList").style.transform = "scaleY(0)";
-      document.querySelector(`#historiaHeader${id}`).parentNode.querySelector(".historiasList").style.display = "none";
+      historiaList.classList.add('collapsed')
+      historiaHeader.classList.remove("iconeCollapse")
+      historiaHeader.classList.add("iconeUncollapse")
     }
   }
 
   const collapseEtiqueta = () => {
-    if(document.querySelector(`#etiquetasHeader`).classList.contains('collapsed')){
-      document.querySelector(`#etiquetasHeader`).classList.remove('collapsed')
-      document.querySelector(`#etiquetasContainer`).style.transform = "scaleY(1)";
-      document.querySelector(`#etiquetasContainer`).style.display = "flex";
+
+    let tempEtiquetaList = document.querySelector(`#etiquetasHeader`).parentNode.children[2]
+    let historiaHeader = document.querySelector(`#etiquetasHeader`)
+    if(tempEtiquetaList.classList.contains('collapsed')){
+      tempEtiquetaList.classList.remove('collapsed')
+      historiaHeader.classList.remove("iconeUncollapse")
+      historiaHeader.classList.add("iconeCollapse")
     }else{
-      document.querySelector(`#etiquetasHeader`).classList.add('collapsed')
-      document.querySelector(`#etiquetasContainer`).style.transform = "scaleY(0)";
-      document.querySelector(`#etiquetasContainer`).style.display = "none";
+      tempEtiquetaList.classList.add('collapsed')
+      historiaHeader.classList.remove("iconeCollapse")
+      historiaHeader.classList.add("iconeUncollapse")
     }
   }
 
@@ -151,41 +156,47 @@ function App() {
           <h2>Etiquetas</h2>
           <button onClick={() => handleShowEtiquetaForm()}>Nova etiqueta</button>
         </div>
-        <div id="etiquetasHeader" className="collapsed" onClick={collapseEtiqueta}>
+        <div id="etiquetasHeader" className="iconeUncollapse" onClick={collapseEtiqueta}>
+          <div className="icone"></div>
           <h2>Etiquetas</h2>
         </div>
-        <div id="etiquetasContainer">
+        <div id="etiquetasContainer" className="collapsed">
 
-          {etiquetas.map((etiqueta, keyEtiqueta) => {
+          {(etiquetas.length > 0 ) ? etiquetas.map((etiqueta, keyEtiqueta) => {
             return (
               <div className="etiqueta" key={keyEtiqueta} onClick={() => handleShowEtiquetaForm(keyEtiqueta)}>
                 <p>{etiqueta}</p>
               </div>)
-          })}
+          }) : (<p className="msgNaoHa">Não há etiquetas</p>)}
 
         </div>
       </div>
       <div id="historias">
         <div className="headerContainer">
           <h2>Histórias</h2>
-          <button onClick={() => handleShowHistoriaForm(-1)}>Nova história</button>
+          <button onClick={() => handleShowHistoriaForm(-1)} disabled={etiquetas.length <= 0}>Nova história</button>
         </div>
         <div className="historias">
           {etiquetas.map((etiqueta, keyEtiqueta) => {
             return(
               
-                <div className="historiaContainer" key={keyEtiqueta}>
-                  <div className="historiaHeader collapsed" id={"historiaHeader"+keyEtiqueta} onClick={() => handleCollapse(keyEtiqueta)}>
+                <div className={(historias[keyEtiqueta]?.length == 0 || historias.length == 0) ? "historiaContainer naoHaContainer" : "historiaContainer"} key={keyEtiqueta} >
+                  <div className="historiaHeader iconeUncollapse" id={"historiaHeader"+keyEtiqueta} onClick={() => handleCollapse(keyEtiqueta)} >
+                    <div className="icone"></div>
                     <h2>{etiqueta}</h2>
                   </div>
-                  <div className="historiasList">
-                    {historias[keyEtiqueta]?.map((historia, keyHistoria) => {
+                  <div className="historiasList collapsed">
+                    {(historias[keyEtiqueta]?.length > 0) ? historias[keyEtiqueta]?.map((historia, keyHistoria) => {
+                      console.log(historias)
                       return(
-                        <div className="historia" onClick={() => handleShowHistoriaForm(keyHistoria, keyEtiqueta)}>
-                          <p key={keyHistoria}>{historia[0]}</p>
+                        <div className="historia" key={keyHistoria} onClick={() => handleShowHistoriaForm(keyHistoria, keyEtiqueta)}>
+                          <p>{historia[0]}</p>
                         </div>
+                        
                       )
-                    })}
+                    }) : (
+                      <p className="msgNaoHa">Não há histórias</p>
+                    )}
                   </div>
                 </div>
             )

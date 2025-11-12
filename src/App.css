@@ -43,16 +43,42 @@ h1{
     border: 2px solid gray;
     padding: .8em;
     cursor: pointer;
+    position: relative;
+}
+
+#etiquetasHeader .icone, .historiaHeader .icone{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 2.1em;
+    height: 2.1em;
+    position: absolute;
+    right: 1em;
+    background-image: url("./assets/uncollapseButton.png");
+    transition: transform .2s;
+}
+
+.iconeCollapse .icone{
+    transform: rotate(180deg);
+}
+
+:disabled{
+    cursor: default !important;
 }
 
 #etiquetasContainer, .historiasContainer{
     border: 1px solid gray;
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 1.6em;
     padding: 1em;
+    transition: max-height .3s ease, padding .3s ease, opacity .3s ease;
+}
+
+.etiquetasContainer.collapsed{
+    opacity: 0;
 }
 
 .etiqueta, .historia{
@@ -69,6 +95,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity .3s;
 }
 
 .etiqueta:hover, .historia:hover{
@@ -86,18 +113,42 @@ h1{
     border-radius: 4px;
     border: 1px solid gray;
     cursor: pointer;
+    transition: transform .3s;
+}
+
+.headerContainer button:hover{
+    transform: scale(1.05);
 }
 
 .historiasList{
-    display: none;
     flex-wrap: wrap;
     gap: 1em;
-    transition: transform .1s, display .2s;
-    transform-origin: top;
-    transform: scaleY(0);
     padding: 1em;
+    transition: max-height .3s ease, padding .3s ease, opacity .3s ease;
 }
 
-/* :has(.collapsed) .historiasList{
-    transform: translateY(-50%) scaleY(0);
-} */
+.historiasList.collapsed, #etiquetasContainer.collapsed{
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.historiasList.collapsed .historia{
+    opacity: 0;
+}
+
+.naoHaContainer .historiasList{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.historiasList .msgNaoHa{
+    background-color: #d3d3d3;
+    padding: 1em;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .12);
+}
