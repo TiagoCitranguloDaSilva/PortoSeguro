@@ -1,7 +1,7 @@
 
 
 #formEtiqueta{
-    position: absolute;
+    position: fixed;
     backdrop-filter: blur(2px);
     width: 100svw;
     height: 100svh;

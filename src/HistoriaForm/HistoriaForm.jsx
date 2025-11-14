@@ -28,6 +28,7 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
 
     const fecharFormulario = () => {
         document.querySelector("#formHistoria").style.display = "none"
+        document.body.style.overflowY = "auto"
         setNomeHistoria("")
         setHistoria("")
         setEscolha(0)

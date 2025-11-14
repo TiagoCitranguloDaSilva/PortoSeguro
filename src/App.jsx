@@ -50,6 +50,7 @@ function App() {
       setIdEtiqueta(id)
     }
     document.querySelector("#formEtiqueta").style.display = "flex"
+    document.body.style.overflowY = "hidden"
   }
 
   const handleShowHistoriaForm = (id = -1, idEtiqueta = -1) => {
@@ -61,6 +62,7 @@ function App() {
       setIdEscolhaOriginal(idEtiqueta)
     }
     document.querySelector("#formHistoria").style.display = "flex"
+    document.body.style.overflowY = "hidden"
   }
 
   const handleEtiqueta = (valor) => {
@@ -109,8 +111,9 @@ function App() {
   }
 
   const handleApagarHistoria = () => {
-    let historiaAtualizada = historias[idEscolhaOriginal].filter((_, index) => index !== idHistoria)
-    setHistorias(historiaAtualizada)
+    let tempHistoria = [...historias]
+    tempHistoria[idEscolhaOriginal] = tempHistoria[idEscolhaOriginal].filter((_, index) => index !== idHistoria)
+    setHistorias(tempHistoria)
     setIdHistoria(-1)
     setIdEscolhaOriginal(-1)
 
@@ -187,7 +190,6 @@ function App() {
                   </div>
                   <div className="historiasList collapsed">
                     {(historias[keyEtiqueta]?.length > 0) ? historias[keyEtiqueta]?.map((historia, keyHistoria) => {
-                      console.log(historias)
                       return(
                         <div className="historia" key={keyHistoria} onClick={() => handleShowHistoriaForm(keyHistoria, keyEtiqueta)}>
                           <p>{historia[0]}</p>
