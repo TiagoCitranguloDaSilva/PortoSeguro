@@ -8,8 +8,6 @@
     align-items: center;
     justify-content: center;
     display: none;
-    
-
 }
 
 #formHistoria h2{
@@ -21,7 +19,7 @@
     height: 100svh;
     position: relative;
     gap: 2em;
-    background-color: #f1f1f1;
+    background-color: #91b2ff;
     padding: 5em;
     font-size: 1.3rem;
     border: 5px solid black;
@@ -33,6 +31,11 @@
 #formHistoria form > div{
     display: flex;
     justify-content: space-between;
+}
+
+label{
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 
 select{
@@ -58,15 +61,16 @@ select{
 
 #formHistoria form input[type="submit"], .buttonApagar{
     width: 5em;
+    height: 2.5em;
     margin: auto;
     font-size: 1.2em;
     padding: .2em;
     border-radius: 6px;
-    border: none;
-    background-color: #b2b2b2;
-    color: rgb(0, 0, 0);
     cursor: pointer;
     transition: transform .3s;
+    background-color: #829ee0;
+    color: white;
+    border: 3px solid #6488dd;
 }
 
 #formHistoria form input{
@@ -84,6 +88,11 @@ select{
     font-size: 1rem;
     transition: transform .3s;
     cursor: pointer;
+    background-color: #829ee0;
+    color: white;
+    border: 3px solid #6488dd;
+    padding: .5em;
+    border-radius: 5px;
 }
 
 #fecharFormulario:hover{
@@ -92,7 +101,7 @@ select{
 
 .botoes{
     display: flex;
-    gap: 1em;
+    gap: 1em;  
 }
 
 .buttonApagar{
@@ -104,5 +113,8 @@ textarea{
     display: block;
     height: 100%;
     border-radius: 6px;
+    padding: .4em;
+    resize: none;
+    font-size: 1.1rem;
 }
 

@@ -52,7 +52,7 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
                         </select>
                     </p>
                 </div>
-                <p><label htmlFor="historiaTextArea">História: </label><textarea id="historiaTextArea" onChange={(e) => setHistoria(e.target.value)} value={historia} placeholder='Conte sua história'></textarea></p>
+                <p><label htmlFor="historiaTextArea">História: </label><textarea id="historiaTextArea" onChange={(e) => setHistoria(e.target.value)} value={historia} placeholder='Conte sua história...'></textarea></p>
                 <div className='botoes'>
                     <input type="submit" value="Salvar" />
                     <button className='buttonApagar' onClick={

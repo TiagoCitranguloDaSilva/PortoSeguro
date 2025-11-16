@@ -5,6 +5,7 @@
     flex-direction: column;
     gap: 1.8em;
     align-items: center;
+    color: rgb(59, 59, 59);
 }
 
 h1{
@@ -13,10 +14,10 @@ h1{
     font-style: italic;
 }
 
+
 #etiquetas, #historias{
     display: flex;
     flex-direction: column;
-    box-shadow: 6px 6px 6px rgba(0, 0, 0, .12);
     border-radius: 5px;
     user-select: none;
 }
@@ -41,10 +42,17 @@ h1{
     align-items: center;
     justify-content: center;
     text-align: center;
-    border: 2px solid gray;
+    background-color: #f5f8ff;
     padding: .8em;
     cursor: pointer;
     position: relative;
+    border-radius: 6px;
+}
+
+.historiaContainer{
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
 }
 
 #etiquetasHeader .icone, .historiaHeader .icone{
@@ -63,12 +71,17 @@ h1{
     transform: rotate(180deg);
 }
 
+#etiquetas .iconeCollapse{
+    border-bottom: 2px solid #e2e2e2;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
 :disabled{
     cursor: default !important;
 }
 
 #etiquetasContainer, .historiasContainer{
-    border: 1px solid gray;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -78,16 +91,23 @@ h1{
     transition: max-height .3s ease, padding .3s ease, opacity .3s ease;
 }
 
+#etiquetasContainer{
+    background-color: #f5f8ff;
+    border-radius: 0 0 5px 5px;
+}
+
 .etiquetasContainer.collapsed{
     opacity: 0;
 }
 
 .etiqueta, .historia{
-    border: 1px solid gray;
+    border: 3px solid #7b99e0;
     padding: .6em;
     cursor: pointer;
     transition: transform .3s;
     border-radius: 6px;
+    background-color: white;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .08);
 }
 
 .historia{
@@ -112,9 +132,13 @@ h1{
 .headerContainer button{
     padding: .5em;
     border-radius: 4px;
-    border: 1px solid gray;
+    border: 3px solid #7b99e0;
     cursor: pointer;
     transition: transform .3s;
+    background-color: #829ee0;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
 }
 
 .headerContainer button:hover{

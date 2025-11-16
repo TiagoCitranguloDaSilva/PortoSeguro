@@ -23,14 +23,13 @@
     align-items: center;
     justify-content: center;
     gap: 2em;
-    background-color: #f1f1f1;
+    background-color: #91b2ff;
     width: max-content;
-    /* min-width: 25em;
-    min-height: 25em; */
     max-width: 100%;
     padding: 5em;
     font-size: 1.3rem;
-    border: 5px solid black;
+    border: 5px solid #6c94f1;
+    border-radius: 5px;
     
 }
 
@@ -49,15 +48,16 @@
 
 #formEtiqueta form input[type="submit"], .buttonApagar{
     width: 5em;
+    height: 2.5em;
     margin: auto;
     font-size: 1.2em;
     padding: .2em;
     border-radius: 6px;
-    border: none;
-    background-color: #b2b2b2;
-    color: rgb(0, 0, 0);
     cursor: pointer;
     transition: transform .3s;
+    background-color: #829ee0;
+    color: white;
+    border: 3px solid #6488dd;
 }
 
 #formEtiqueta form input[type="submit"]:hover, .buttonApagar:hover{
