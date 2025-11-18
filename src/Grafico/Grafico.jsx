@@ -75,8 +75,7 @@ function Grafico({ etiquetas, historias, visivel }) {
             }
             document.querySelector("#msgNaoHaDados").style.display = "none"
         }
-        console.log(historias.length)
-        console.log(historias)
+
         atualizarData(etiquetas, historias)
 
     }, [etiquetas, historias])
