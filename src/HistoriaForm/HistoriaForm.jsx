@@ -43,12 +43,10 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
                     <p><label htmlFor="tituloHistoria">Titulo: </label><input type="text" id="tituloHistoria" required placeholder="Nome da história" value={nomeHistoria} onChange={(e) => {setNomeHistoria(e.target.value)}} /></p>
                     <p>
                         <label htmlFor="escolhaEtiqueta">Etiqueta: </label>
-                        <select id="escolhaEtiqueta" onChange={(e) => setEscolha(document.querySelector("#escolhaEtiqueta").value)}>
-                            {etiquetas.map((etiqueta, index) => {
-                                return(
-                                    <option value={index} key={index} defaultValue={index == escolha}>{etiqueta}</option>
-                                )
-                            })}
+                        <select id="escolhaEtiqueta" onChange={(e) => setEscolha(e.target.value)} value={escolha}>
+                            {etiquetas.map((etiqueta, index) => (
+                                <option value={index} key={index}>{etiqueta}</option>
+                            ))}
                         </select>
                     </p>
                 </div>

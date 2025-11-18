@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 
 import EtiquetaForm from "./EtiquetaForm/EtiquetaForm"
 import HistoriaForm from "./HistoriaForm/HistoriaForm"
+import Grafico from "./grafico/Grafico.jsx"
+import botaoGrafico from './assets/botaoGrafico.png'
 
 function App() {
 
@@ -16,6 +18,9 @@ function App() {
   const [idHistoria, setIdHistoria] = useState(-1)
   const [idEscolhaOriginal, setIdEscolhaOriginal] = useState(-1)
 
+  const [graficoVisivel, setGraficoVisivel] = useState(false)
+
+  
 
   useEffect(() => {
     if (!carregou) {
@@ -149,11 +154,23 @@ function App() {
     }
   }
 
-
+  function showGraficoPopUp(){
+    if(document.querySelector("#grafico").classList.contains("hidden")){
+      document.querySelector("#grafico").classList.remove("hidden")
+      setGraficoVisivel(true)
+    }else{
+      document.querySelector("#grafico").classList.add("hidden")
+      setGraficoVisivel(false)
+    }
+  }
 
   return (
     <>
       <h1>Um Pouco de Tudo</h1>
+      <button id="graficoButton" onClick={showGraficoPopUp}>
+        <img src={botaoGrafico} alt="" />
+      </button>
+      <Grafico etiquetas={etiquetas} historias={historias} visivel={graficoVisivel} />
       <div id="etiquetas">
         <div className="headerContainer">
           <h2>Etiquetas</h2>

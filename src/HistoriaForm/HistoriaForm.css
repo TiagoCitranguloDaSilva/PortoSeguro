@@ -1,6 +1,7 @@
 
 #formHistoria{
     position: fixed;
+    top: 0;
     backdrop-filter: blur(2px);
     width: 100svw;
     height: 100svh;

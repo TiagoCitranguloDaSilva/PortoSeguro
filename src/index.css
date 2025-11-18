@@ -10,3 +10,8 @@ body, #root{
     min-height: 100svh;
     background-color: #91b2ff;
 }
+
+#root{
+    padding: 1em;
+    padding-bottom: 2em;
+}
