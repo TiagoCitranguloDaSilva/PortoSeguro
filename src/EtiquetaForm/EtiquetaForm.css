@@ -9,11 +9,12 @@
     align-items: center;
     justify-content: center;
     display: none;
-
+    z-index: 3;
 }
 
 #formEtiqueta h2{
     text-align: center;
+    pointer-events: none;
 }
 
 #formEtiqueta form{
@@ -86,3 +87,14 @@
     display: none;
 }
 
+@media (width < 600px){
+    #formEtiqueta form{
+        height: 100svh;
+        width: 100svw;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}

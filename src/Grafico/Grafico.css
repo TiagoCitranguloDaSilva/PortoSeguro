@@ -16,6 +16,10 @@
 
 }   
 
+#grafico h1{
+    text-align: center;
+}
+
 #grafico > div{
     width: 80%;
     height: 80%;

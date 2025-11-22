@@ -6,6 +6,7 @@
     gap: 1.8em;
     align-items: center;
     color: rgb(59, 59, 59);
+    max-width: 100svw;
 }
 
 h1{
@@ -27,13 +28,12 @@ h1{
 }
 
 #etiquetas{
-    max-width: 1100px;
-    min-width: 40em;
-    width: max-content;
+    max-width: 100svw;
+    width: 40em;
 }
 
 #historias{
-    max-width: 1100px;
+    max-width: 100svw;
     width: 60em;
 }
 
@@ -47,6 +47,7 @@ h1{
     cursor: pointer;
     position: relative;
     border-radius: 6px;
+    max-width: 100%;
 }
 
 .historiaContainer{
@@ -206,3 +207,17 @@ h1{
     padding: .2em;
 }
 
+
+@media (width < 600px) {
+    #root{
+        padding: 0;
+    }
+
+    .historiaHeader, #etiquetasHeader{
+        border-radius: 0;
+    }
+
+    h1{
+        margin-top: 2.5em;
+    }
+}
