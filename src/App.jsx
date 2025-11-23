@@ -20,7 +20,7 @@ function App() {
 
   const [graficoVisivel, setGraficoVisivel] = useState(false)
 
-  
+
 
   useEffect(() => {
     if (!carregou) {
@@ -28,7 +28,7 @@ function App() {
       const historiasArmazenadas = JSON.parse(localStorage.getItem("historias"));
       if (etiquetasArmazenadas) {
         setEtiquetas(etiquetasArmazenadas);
-        if(historiasArmazenadas){
+        if (historiasArmazenadas) {
           setHistorias(historiasArmazenadas);
         }
       }
@@ -76,7 +76,15 @@ function App() {
       temp[idEtiqueta] = valor
       setEtiquetas([...temp])
     } else {
-      setEtiquetas([...etiquetas, valor])
+      let time = new Date()
+      let anoAtual = time.getFullYear()
+      let mesAtual = time.getMonth() + 1
+      let diaAtual = time.getDate()
+      let horaAtual = time.getHours()
+      let minutoAtual = time.getMinutes()
+      let segundoAtual = time.getSeconds()
+      let tempEtiqueta = [valor, `${anoAtual}/${mesAtual}/${diaAtual} ${horaAtual}:${minutoAtual}:${segundoAtual}`]
+      setEtiquetas([...etiquetas, tempEtiqueta])
       let tempHistorias = [...historias]
       tempHistorias.push([])
       setHistorias(tempHistorias)
@@ -88,18 +96,26 @@ function App() {
 
   const handleHistoria = (titulo, historia, escolha) => {
     let tempArrayHistoria = null
-    if(historiaSelecionada != null){
+
+    if (historiaSelecionada != null) {
       tempArrayHistoria = [...historias]
-      if(escolha == idEscolhaOriginal && escolha != -1){
+      if (escolha == idEscolhaOriginal && escolha != -1) {
         tempArrayHistoria[escolha][idHistoria][0] = titulo
         tempArrayHistoria[escolha][idHistoria][1] = historia
-      }else if(escolha != -1 && escolha != idEscolhaOriginal){
+      } else if (escolha != -1 && escolha != idEscolhaOriginal) {
         tempArrayHistoria[escolha].push([titulo, historia])
         tempArrayHistoria[idEscolhaOriginal].splice(idHistoria, 1)
       }
-    }else{
+    } else {
       tempArrayHistoria = [...historias]
-      tempArrayHistoria[escolha].push([titulo, historia])
+      let time = new Date()
+      let anoAtual = time.getFullYear()
+      let mesAtual = time.getMonth() + 1
+      let diaAtual = time.getDate()
+      let horaAtual = time.getHours()
+      let minutoAtual = time.getMinutes()
+      let segundoAtual = time.getSeconds()
+      tempArrayHistoria[escolha].push([titulo, historia, `${anoAtual}/${mesAtual}/${diaAtual} ${horaAtual}:${minutoAtual}:${segundoAtual}`])
     }
     setHistorias(tempArrayHistoria)
     setIdHistoria(-1)
@@ -125,14 +141,14 @@ function App() {
   }
 
   const handleCollapse = (id) => {
-    
+
     let historiaList = document.querySelector(`#historiaHeader${id}`).parentNode.children[1]
     let historiaHeader = document.querySelector(`#historiaHeader${id}`)
-    if(historiaList.classList.contains('collapsed')){
+    if (historiaList.classList.contains('collapsed')) {
       historiaList.classList.remove('collapsed')
       historiaHeader.classList.remove("iconeUncollapse")
       historiaHeader.classList.add("iconeCollapse")
-    }else{
+    } else {
       historiaList.classList.add('collapsed')
       historiaHeader.classList.remove("iconeCollapse")
       historiaHeader.classList.add("iconeUncollapse")
@@ -143,22 +159,22 @@ function App() {
 
     let tempEtiquetaList = document.querySelector(`#etiquetasHeader`).parentNode.children[2]
     let historiaHeader = document.querySelector(`#etiquetasHeader`)
-    if(tempEtiquetaList.classList.contains('collapsed')){
+    if (tempEtiquetaList.classList.contains('collapsed')) {
       tempEtiquetaList.classList.remove('collapsed')
       historiaHeader.classList.remove("iconeUncollapse")
       historiaHeader.classList.add("iconeCollapse")
-    }else{
+    } else {
       tempEtiquetaList.classList.add('collapsed')
       historiaHeader.classList.remove("iconeCollapse")
       historiaHeader.classList.add("iconeUncollapse")
     }
   }
 
-  function showGraficoPopUp(){
-    if(document.querySelector("#grafico").classList.contains("hidden")){
+  function showGraficoPopUp() {
+    if (document.querySelector("#grafico").classList.contains("hidden")) {
       document.querySelector("#grafico").classList.remove("hidden")
       setGraficoVisivel(true)
-    }else{
+    } else {
       document.querySelector("#grafico").classList.add("hidden")
       setGraficoVisivel(false)
     }
@@ -182,10 +198,10 @@ function App() {
         </div>
         <div id="etiquetasContainer" className="collapsed">
 
-          {(etiquetas.length > 0 ) ? etiquetas.map((etiqueta, keyEtiqueta) => {
+          {(etiquetas.length > 0) ? etiquetas.map((etiqueta, keyEtiqueta) => {
             return (
               <div className="etiqueta" key={keyEtiqueta} onClick={() => handleShowEtiquetaForm(keyEtiqueta)}>
-                <p>{etiqueta}</p>
+                <p>{etiqueta[0]}</p>
               </div>)
           }) : (<p className="msgNaoHa">Não há etiquetas</p>)}
 
@@ -198,30 +214,30 @@ function App() {
         </div>
         <div className="historias">
           {etiquetas.map((etiqueta, keyEtiqueta) => {
-            return(
-              
-                <div className={(historias[keyEtiqueta]?.length == 0 || historias.length == 0) ? "historiaContainer naoHaContainer" : "historiaContainer"} key={keyEtiqueta} >
-                  <div className="historiaHeader iconeUncollapse" id={"historiaHeader"+keyEtiqueta} onClick={() => handleCollapse(keyEtiqueta)} >
-                    <div className="icone"></div>
-                    <h2>{etiqueta}</h2>
-                  </div>
-                  <div className="historiasList collapsed">
-                    {(historias[keyEtiqueta]?.length > 0) ? historias[keyEtiqueta]?.map((historia, keyHistoria) => {
-                      return(
-                        <div className="historia" key={keyHistoria} onClick={() => handleShowHistoriaForm(keyHistoria, keyEtiqueta)}>
-                          <p>{historia[0]}</p>
-                        </div>
-                        
-                      )
-                    }) : (
-                      <p className="msgNaoHa">Não há histórias</p>
-                    )}
-                  </div>
+            return (
+
+              <div className={(historias[keyEtiqueta]?.length == 0 || historias.length == 0) ? "historiaContainer naoHaContainer" : "historiaContainer"} key={keyEtiqueta} >
+                <div className="historiaHeader iconeUncollapse" id={"historiaHeader" + keyEtiqueta} onClick={() => handleCollapse(keyEtiqueta)} >
+                  <div className="icone"></div>
+                  <h2>{etiqueta[0]}</h2>
                 </div>
+                <div className="historiasList collapsed">
+                  {(historias[keyEtiqueta]?.length > 0) ? historias[keyEtiqueta]?.map((historia, keyHistoria) => {
+                    return (
+                      <div className="historia" key={keyHistoria} onClick={() => handleShowHistoriaForm(keyHistoria, keyEtiqueta)}>
+                        <p>{historia[0]}</p>
+                      </div>
+
+                    )
+                  }) : (
+                    <p className="msgNaoHa">Não há histórias</p>
+                  )}
+                </div>
+              </div>
             )
           })}
-          
-          
+
+
         </div>
       </div>
 
