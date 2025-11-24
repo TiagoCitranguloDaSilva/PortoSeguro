@@ -91,7 +91,7 @@ function Grafico({ etiquetas, historias, visivel }) {
 
     function atualizarData(novasEtiquetas, novasHistorias) {
         setData({
-            labels: novasEtiquetas,
+            labels: novasEtiquetas.map((etiqueta, key) => etiqueta[0]),
             datasets: [
                 {
                     label: "Histórias",

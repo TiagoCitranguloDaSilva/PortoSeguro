@@ -50,10 +50,8 @@ function App() {
   }, [historias, carregou])
 
   const handleShowEtiquetaForm = (id = -1) => {
-    setIdEtiqueta(-1)
-    if (id != -1) {
-      setIdEtiqueta(id)
-    }
+    setIdEtiqueta(id)
+    console.log(idEtiqueta)
     document.querySelector("#formEtiqueta").style.display = "flex"
     document.body.style.overflowY = "hidden"
     document.querySelector("#nomeEtiqueta").focus()
@@ -244,7 +242,7 @@ function App() {
         </div>
       </div>
 
-      <EtiquetaForm aoEnviar={handleEtiqueta} editarEtiqueta={etiquetas[idEtiqueta] ? etiquetas[idEtiqueta] : null} aoClicar={handleApagarEtiqueta} />
+      <EtiquetaForm aoEnviar={handleEtiqueta} editarEtiqueta={idEtiqueta !== -1 ? etiquetas[idEtiqueta] : null} aoClicar={handleApagarEtiqueta} />
       <HistoriaForm aoEnviar={handleHistoria} editarHistoria={historiaSelecionada} aoClicar={handleApagarHistoria} etiquetas={etiquetas} />
 
     </>

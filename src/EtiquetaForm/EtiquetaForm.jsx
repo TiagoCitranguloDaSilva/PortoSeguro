@@ -10,7 +10,7 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
         if(editarEtiqueta != null){
             setEditBool(true)
             document.querySelector(".buttonApagar").style.display = 'block' 
-            setNomeEtiqueta(editarEtiqueta)
+            setNomeEtiqueta(editarEtiqueta[0])
         }else{
             setEditBool(false)
             document.querySelector(".buttonApagar").style.display = 'none' 
@@ -26,6 +26,7 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
     const fecharFormulario = () => {
         document.querySelector("#formEtiqueta").style.display = "none"
         document.body.style.overflowY = "auto"
+        console.log(nomeEtiqueta)
         setNomeEtiqueta("")
     }
 
