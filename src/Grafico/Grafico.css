@@ -39,3 +39,7 @@ canvas{
 #grafico:not(.hidden){
     display: grid;
 }
+
+#msgNaoHaDados h2{
+    text-align: center;
+}

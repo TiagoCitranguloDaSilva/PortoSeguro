@@ -45,7 +45,7 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
                         <label htmlFor="escolhaEtiqueta">Etiqueta: </label>
                         <select id="escolhaEtiqueta" onChange={(e) => setEscolha(e.target.value)} value={escolha}>
                             {etiquetas.map((etiqueta, index) => (
-                                <option value={index} key={index}>{etiqueta}</option>
+                                <option value={index} key={index}>{etiqueta[0]}</option>
                             ))}
                         </select>
                     </p>

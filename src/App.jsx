@@ -56,6 +56,7 @@ function App() {
     }
     document.querySelector("#formEtiqueta").style.display = "flex"
     document.body.style.overflowY = "hidden"
+    document.querySelector("#nomeEtiqueta").focus()
   }
 
   const handleShowHistoriaForm = (id = -1, idEtiqueta = -1) => {
@@ -65,9 +66,11 @@ function App() {
       setHistoriaSelecionada([historias[idEtiqueta][id], idEtiqueta])
       setIdHistoria(id)
       setIdEscolhaOriginal(idEtiqueta)
+      
     }
     document.querySelector("#formHistoria").style.display = "flex"
     document.body.style.overflowY = "hidden"
+    document.querySelector("#tituloHistoria").focus()
   }
 
   const handleEtiqueta = (valor) => {
