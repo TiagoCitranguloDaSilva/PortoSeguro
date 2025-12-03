@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import EtiquetaForm from "./EtiquetaForm/EtiquetaForm"
 import HistoriaForm from "./HistoriaForm/HistoriaForm"
 import Grafico from "./grafico/Grafico.jsx"
+import Configuration from "./Configuration/Configuration.jsx"
 import botaoGrafico from './assets/botaoGrafico.png'
 
 function App() {
@@ -51,7 +52,6 @@ function App() {
 
   const handleShowEtiquetaForm = (id = -1) => {
     setIdEtiqueta(id)
-    console.log(idEtiqueta)
     document.querySelector("#formEtiqueta").style.display = "flex"
     document.body.style.overflowY = "hidden"
     document.querySelector("#nomeEtiqueta").focus()
@@ -171,6 +171,11 @@ function App() {
     }
   }
 
+  const importedValues = (importEtiquetas, importHistorias) => {
+    setEtiquetas(importEtiquetas)
+    setHistorias(importHistorias)
+  }
+
   function showGraficoPopUp() {
     if (document.querySelector("#grafico").classList.contains("hidden")) {
       document.querySelector("#grafico").classList.remove("hidden")
@@ -181,12 +186,28 @@ function App() {
     }
   }
 
+  function showConfigPopUp() {
+    if (document.querySelector("#config").classList.contains("hidden")) {
+      document.querySelector("#config").classList.remove("hidden")
+    } else {
+      document.querySelector("#config").classList.add("hidden")
+      if(!document.querySelector("#inputFileContainer").classList.contains("hidden")){
+          document.querySelector("#inputFileContainer").classList.add("hidden")
+      }
+    }
+  }
+
   return (
     <>
       <h1>Um Pouco de Tudo</h1>
+      <button id="configButton" onClick={showConfigPopUp}>
+        {/* <img src={botaoConfig} alt="" /> */}
+        Configurações
+      </button>
       <button id="graficoButton" onClick={showGraficoPopUp}>
         <img src={botaoGrafico} alt="" />
       </button>
+      <Configuration etiquetas={etiquetas} historias={historias} aoEnviar={importedValues}/>
       <Grafico etiquetas={etiquetas} historias={historias} visivel={graficoVisivel} />
       <div id="etiquetas">
         <div className="headerContainer">

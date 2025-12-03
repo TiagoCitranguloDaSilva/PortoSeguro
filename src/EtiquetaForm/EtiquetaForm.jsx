@@ -26,7 +26,6 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
     const fecharFormulario = () => {
         document.querySelector("#formEtiqueta").style.display = "none"
         document.body.style.overflowY = "auto"
-        console.log(nomeEtiqueta)
         setNomeEtiqueta("")
     }
 
