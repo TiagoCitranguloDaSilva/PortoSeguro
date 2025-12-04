@@ -7,6 +7,7 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
     const [nomeHistoria, setNomeHistoria] = useState("")
     const [historia, setHistoria] = useState("")
     const [escolha, setEscolha] = useState(0)
+    const [dataHistoria, setDataHistoria] = useState(null)
 
 
     useEffect(() => {
@@ -15,6 +16,8 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
                 setNomeHistoria(editarHistoria[0][0])
                 setHistoria(editarHistoria[0][1])
                 setEscolha(editarHistoria[1])
+                const data = new Date(editarHistoria[0][2])
+                setDataHistoria(data.toLocaleDateString("pt-BR"))
             }else{
                 document.querySelector("#formHistoria .buttonApagar").style.display = 'none' 
             }
@@ -32,6 +35,7 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
         setNomeHistoria("")
         setHistoria("")
         setEscolha(0)
+        setDataHistoria(null)
     }
 
     return(
@@ -62,6 +66,7 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
                         }>Apagar</button>
 
                 </div>
+                {(dataHistoria != null) ? <div id="dataHistoria">Data de criação: {dataHistoria}</div> : null}
             </form>
         </div>
     )

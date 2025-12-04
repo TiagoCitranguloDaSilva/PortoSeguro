@@ -123,6 +123,14 @@ textarea {
     font-size: 1.1rem;
 }
 
+#dataHistoria{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-bottom: .5em;
+    padding-right: .5em;
+}
+
 @media (width < 700px) {
     #formHistoria form {
         padding: .3em;

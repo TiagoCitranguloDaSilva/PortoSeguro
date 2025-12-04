@@ -4,6 +4,7 @@ import "./EtiquetaForm.css"
 function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
 
     const [nomeEtiqueta, setNomeEtiqueta] = useState("")
+    const [dataEtiqueta, setDataEtiqueta] = useState(null)
     const [editBool, setEditBool] = useState(false)
 
     useEffect(() => {
@@ -11,6 +12,9 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
             setEditBool(true)
             document.querySelector(".buttonApagar").style.display = 'block' 
             setNomeEtiqueta(editarEtiqueta[0])
+            const data = new Date(editarEtiqueta[1])
+            const dataFormatada = data.toLocaleDateString('pt-BR')
+            setDataEtiqueta(dataFormatada)
         }else{
             setEditBool(false)
             document.querySelector(".buttonApagar").style.display = 'none' 
@@ -27,6 +31,7 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
         document.querySelector("#formEtiqueta").style.display = "none"
         document.body.style.overflowY = "auto"
         setNomeEtiqueta("")
+        setDataEtiqueta(null)
     }
 
     
@@ -49,6 +54,7 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
                         }>Apagar</button>
 
                 </div>
+                {(dataEtiqueta != null) ? <div id="dataEtiqueta">Criado em: {dataEtiqueta}</div> : null}
             </form>
         </div>
     )

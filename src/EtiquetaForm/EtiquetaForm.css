@@ -87,6 +87,14 @@
     display: none;
 }
 
+#dataEtiqueta{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-right: .5em;
+    padding-bottom: .5em;
+}
+
 @media (width < 600px){
     #formEtiqueta form{
         height: 100svh;
