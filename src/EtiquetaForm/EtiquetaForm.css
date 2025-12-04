@@ -10,6 +10,7 @@
     justify-content: center;
     display: none;
     z-index: 4;
+    top: 0;
 }
 
 #formEtiqueta h2{
@@ -17,7 +18,7 @@
     pointer-events: none;
 }
 
-#formEtiqueta form{
+#formPrincipalEtiqueta{
     position: relative;
     display: grid;
     grid-template-rows: 1fr max-content 1fr;
@@ -34,6 +35,10 @@
     
 }
 
+.hidden{
+    display: none !important;
+}
+
 #formEtiqueta form p{
     display: flex;
     flex-direction: column;
@@ -47,21 +52,8 @@
     padding: 3px;
 }
 
-#formEtiqueta form input[type="submit"], .buttonApagar{
-    width: 5em;
-    height: 2.5em;
-    margin: auto;
-    font-size: 1.2em;
-    padding: .2em;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: transform .3s;
-    background-color: #829ee0;
-    color: white;
-    border: 3px solid #6488dd;
-}
 
-#formEtiqueta form input[type="submit"]:hover, .buttonApagar:hover{
+#formEtiqueta form input[type="submit"]:hover, #formEtiqueta button:hover{
     transform: scale(1.05);
 }
 
@@ -83,6 +75,20 @@
     gap: 1em;
 }
 
+.botoes *{
+    width: 5em;
+    height: 2.5em;
+    margin: auto;
+    font-size: 1.2em;
+    padding: .2em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform .3s;
+    background-color: #829ee0;
+    color: white;
+    border: 3px solid #6488dd;
+}
+
 .buttonApagar{
     display: none;
 }
@@ -94,6 +100,8 @@
     padding-right: .5em;
     padding-bottom: .5em;
 }
+
+
 
 @media (width < 600px){
     #formEtiqueta form{

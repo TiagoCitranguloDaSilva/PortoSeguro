@@ -34,9 +34,28 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
         setDataEtiqueta(null)
     }
 
+    const mostrarConfirmacao = () => {
+        if(document.querySelector("#formEtiqueta .msgConfirmacao").classList.contains("hidden")){
+            document.querySelector("#formEtiqueta .msgConfirmacao").classList.remove("hidden")
+        }else{
+            document.querySelector("#formEtiqueta .msgConfirmacao").classList.add("hidden")
+        }
+    }
+
+    const handleCancelDelete = () => {
+        mostrarConfirmacao()
+    }
+
+    const handleDeleteEtiqueta = (e) => {
+        e.preventDefault()
+        aoClicar()
+        mostrarConfirmacao()
+        fecharFormulario()
+    }
+
     return(
         <div id="formEtiqueta">
-            <form onSubmit={handleSubmit} autoComplete='off'>
+            <form onSubmit={handleSubmit} autoComplete='off' id='formPrincipalEtiqueta'>
                 <button onClick={fecharFormulario} id='fecharFormulario' type='button'>Fechar</button>
                 <h2>Nova etiqueta</h2>
                 <p><label htmlFor="nomeEtiqueta">Nome: </label><input type="text" id="nomeEtiqueta" required placeholder="Nome da etiqueta" value={nomeEtiqueta} maxLength={50} onChange={(e) => {setNomeEtiqueta(e.target.value)}} /></p>
@@ -46,14 +65,22 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
                     <button className='buttonApagar' type='button' onClick={
                         (e) => {
                             e.preventDefault()
-                            aoClicar()
-                            fecharFormulario()
+                            mostrarConfirmacao()
                         }
                         }>Apagar</button>
 
                 </div>
                 {(dataEtiqueta != null) ? <div id="dataEtiqueta">Criado em: {dataEtiqueta}</div> : null}
             </form>
+            <div className='hidden msgConfirmacao'>
+                <form className='formMsgConfirmacao' onSubmit={(e) => handleDeleteEtiqueta(e)}>
+                    <p>Deseja apagar permanentemente esta etiqueta?</p>
+                    <div className="botoes">
+                        <button type="button" onClick={handleCancelDelete}>Cancelar</button>
+                        <input type="submit" value="Apagar" />
+                    </div>
+                </form>
+            </div>
         </div>
     )
 

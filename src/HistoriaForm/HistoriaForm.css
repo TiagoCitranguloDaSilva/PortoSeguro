@@ -17,7 +17,7 @@
     pointer-events: none;
 }
 
-#formHistoria form {
+#formPrincipalHistoria{
     width: 100svw;
     height: 100svh;
     position: relative;

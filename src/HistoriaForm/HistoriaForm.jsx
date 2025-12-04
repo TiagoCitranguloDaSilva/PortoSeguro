@@ -38,9 +38,28 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
         setDataHistoria(null)
     }
 
+     const mostrarConfirmacao = () => {
+        if(document.querySelector("#formHistoria .msgConfirmacao").classList.contains("hidden")){
+            document.querySelector("#formHistoria .msgConfirmacao").classList.remove("hidden")
+        }else{
+            document.querySelector("#formHistoria .msgConfirmacao").classList.add("hidden")
+        }
+    }
+
+    const handleCancelDelete = () => {
+        mostrarConfirmacao()
+    }
+
+    const handleDeleteEtiqueta = (e) => {
+        e.preventDefault()
+        aoClicar()
+        mostrarConfirmacao()
+        fecharFormulario()
+    }
+
     return(
         <div id="formHistoria">
-            <form onSubmit={handleSubmit} autoComplete='off'>
+            <form onSubmit={handleSubmit} autoComplete='off' id='formPrincipalHistoria'>
                 <button onClick={fecharFormulario} id='fecharFormulario'>Voltar</button>
                 <h2>Nova história</h2>
                 <div>
@@ -60,14 +79,22 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
                     <button className='buttonApagar' onClick={
                         (e) => {
                             e.preventDefault()
-                            aoClicar()
-                            fecharFormulario()
+                            mostrarConfirmacao()
                         }
                         }>Apagar</button>
 
                 </div>
                 {(dataHistoria != null) ? <div id="dataHistoria">Data de criação: {dataHistoria}</div> : null}
             </form>
+            <div className='hidden msgConfirmacao'>
+                <form cçassName='formMsgConfirmacao' onSubmit={(e) => handleDeleteEtiqueta(e)}>
+                    <p>Deseja apagar permanentemente esta história?</p>
+                    <div className="botoes">
+                        <button type="button" onClick={handleCancelDelete}>Cancelar</button>
+                        <input type="submit" value="Apagar" />
+                    </div>
+                </form>
+            </div>
         </div>
     )
 

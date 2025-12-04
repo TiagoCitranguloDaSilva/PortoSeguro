@@ -207,6 +207,49 @@ h1{
     padding: .2em;
 }
 
+.msgConfirmacao{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100svw;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: all;
+    backdrop-filter: blur(5px);
+}
+
+.msgConfirmacao form{
+    width: 25em;
+    padding: 2em 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #91b2ff;
+    border: 5px solid #7793d2;
+    gap: 1em;
+}
+
+.msgConfirmacao form .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.msgConfirmacao input[type="submit"]:hover, .msgConfirmacao button:hover{
+    transform: scale(1.05);
+}
+
+.msgConfirmacao p{
+    font-size: 1.5rem !important;
+    text-align: center;
+    color: white;
+}
+
 
 @media (width < 600px) {
     #root{
