@@ -75,7 +75,7 @@ function App() {
   const handleEtiqueta = (valor) => {
     if (idEtiqueta != -1) {
       let temp = [...etiquetas]
-      temp[idEtiqueta] = valor
+      temp[idEtiqueta][0] = valor
       setEtiquetas([...temp])
     } else {
       let time = new Date()

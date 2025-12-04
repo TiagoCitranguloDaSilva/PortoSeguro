@@ -34,18 +34,16 @@ function NovaEtiquetaForm({aoEnviar, editarEtiqueta, aoClicar}){
         setDataEtiqueta(null)
     }
 
-    
-
     return(
         <div id="formEtiqueta">
             <form onSubmit={handleSubmit} autoComplete='off'>
-                <button onClick={fecharFormulario} id='fecharFormulario'>Fechar</button>
+                <button onClick={fecharFormulario} id='fecharFormulario' type='button'>Fechar</button>
                 <h2>Nova etiqueta</h2>
                 <p><label htmlFor="nomeEtiqueta">Nome: </label><input type="text" id="nomeEtiqueta" required placeholder="Nome da etiqueta" value={nomeEtiqueta} maxLength={50} onChange={(e) => {setNomeEtiqueta(e.target.value)}} /></p>
 
                 <div className='botoes'>
                     <input type="submit" value="Salvar" />
-                    <button className='buttonApagar' onClick={
+                    <button className='buttonApagar' type='button' onClick={
                         (e) => {
                             e.preventDefault()
                             aoClicar()
