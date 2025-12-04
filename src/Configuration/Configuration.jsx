@@ -59,7 +59,7 @@ function Configuration({ etiquetas, historias, aoEnviar }) {
             <h1>Configurações</h1>
             <div id="configContainer">
                 <div id="importExportContainer">
-                    <h2>Importar e exportar dados</h2>
+                    <h2>Exportar e importar dados</h2>
                     <div id="exportImportButtons">
                         <button onClick={handleExport}>Exportar</button>
                         <button onClick={showInputFileContainer}>Importar</button>
