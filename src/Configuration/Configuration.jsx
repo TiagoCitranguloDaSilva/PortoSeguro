@@ -48,6 +48,10 @@ function Configuration({ etiquetas, historias, aoEnviar }) {
         }
 
         fileReader.readAsText(arquivoImport)
+        if(!document.querySelector("#inputFileContainer").classList.contains("hidden")){
+            document.querySelector("#inputFileContainer").classList.add("hidden")
+        }
+        document.querySelector("#arquivo").value = ""
     }
 
     const handleChangeArquivo = (e) => {
