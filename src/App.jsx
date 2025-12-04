@@ -6,6 +6,7 @@ import HistoriaForm from "./HistoriaForm/HistoriaForm"
 import Grafico from "./grafico/Grafico.jsx"
 import Configuration from "./Configuration/Configuration.jsx"
 import botaoGrafico from './assets/botaoGrafico.png'
+import botaoConfig from './assets/botaoConfig.png'
 
 function App() {
 
@@ -201,8 +202,7 @@ function App() {
     <>
       <h1>Um Pouco de Tudo</h1>
       <button id="configButton" onClick={showConfigPopUp}>
-        {/* <img src={botaoConfig} alt="" /> */}
-        Configurações
+        <img src={botaoConfig} alt="" />
       </button>
       <button id="graficoButton" onClick={showGraficoPopUp}>
         <img src={botaoGrafico} alt="" />
