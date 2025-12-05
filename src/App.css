@@ -117,6 +117,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     transition: transform .3s, opacity .3s;
 }
 
