@@ -1,16 +1,37 @@
-# React + Vite
+# Um Pouco De Tudo
+![GitHub License](https://img.shields.io/github/license/TiagoCitranguloDaSilva/UmPoucoDeTudo)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O objetivo do projeto é ser um diário, onde o usuário pode escrever suas histórias e catalogá-las por meio de etiquetas personalizáveis, porém não precisa ser necessariamente ser usado para contar histórias, o usuário pode usar o software como um bloco de notas também caso queira.
 
-Currently, two official plugins are available:
+## Acessar
+Neste repositório contém apenas a versão front-end do projeto, onde todos os dados são salvos no armazenamento local do navegador, e por ser apenas front-end, o projeto está online por meio do GitHub Pages neste link:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Acessar site](https://tiagocitrangulodasilva.github.io/UmPoucoDeTudo/)
 
-## React Compiler
+## Gráfico
+No canto superior direito da página inicial há um botão que permite ver um gráfico de pizza mostrando a relação da quantidade de histórias que estão em cada etiqueta, para esse gráfico funcionar é necessário ter no mínimo 1 etiqueta contendo ao menos 1 história.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Importar e exportar
+Como esse repositório contém a versão em que os dados são salvos no armazenamento local do navegador, no menu de configurações há a possibilidade de importar e exportar os dados. Ao clicar em exportar, o navegador baixará um arquivo JSON contendo as histórias e as etiquetas, porém ao clicar em importar, aparecerá um espaço para o usuário selecionar o arquivo a ser importado.
 
-## Expanding the ESLint configuration
+Tecnologias utilizadas:
+<div>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" height="40px"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" height="40px"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" height="40px"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" height="40px"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" height="40px"/>
+</div>
+Ícones das tecnologias adquiridos em:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[Devicon](https://devicon.dev/)
+
+## Capturas de tela
+Tela inicial
+![Tela inicial](https://github.com/TiagoCitranguloDaSilva/assets/blob/main/UmPoucoDeTudo/telaInicial.png)
+
+Tela inicial já com dados inseridos
+![Tela inicial com dados](https://github.com/TiagoCitranguloDaSilva/assets/blob/main/UmPoucoDeTudo/telaInicialComDados.png)
+
+Gráfico
+![Gráfico](https://github.com/TiagoCitranguloDaSilva/assets/blob/main/UmPoucoDeTudo/grafico.png)
