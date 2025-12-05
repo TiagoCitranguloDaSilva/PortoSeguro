@@ -87,7 +87,7 @@ function HistoriaForm({aoEnviar, editarHistoria, aoClicar, etiquetas}){
                 {(dataHistoria != null) ? <div id="dataHistoria">Data de criação: {dataHistoria}</div> : null}
             </form>
             <div className='hidden msgConfirmacao'>
-                <form cçassName='formMsgConfirmacao' onSubmit={(e) => handleDeleteEtiqueta(e)}>
+                <form className='formMsgConfirmacao' onSubmit={(e) => handleDeleteEtiqueta(e)}>
                     <p>Deseja apagar permanentemente esta história?</p>
                     <div className="botoes">
                         <button type="button" onClick={handleCancelDelete}>Cancelar</button>

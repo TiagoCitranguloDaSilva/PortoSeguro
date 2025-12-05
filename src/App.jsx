@@ -7,6 +7,7 @@ import Grafico from "./grafico/Grafico.jsx"
 import Configuration from "./Configuration/Configuration.jsx"
 import botaoGrafico from './assets/botaoGrafico.png'
 import botaoConfig from './assets/botaoConfig.png'
+import Mensagem from './Mensagem/Mensagem.jsx'
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
 
   const [graficoVisivel, setGraficoVisivel] = useState(false)
 
-
+  const [textoMensagem, setTextoMensagem] = useState(null)
+  const [textoMensagemVisivel, setTextoMensagemVisivel] = useState(false)
 
   useEffect(() => {
     if (!carregou) {
@@ -93,6 +95,8 @@ function App() {
     }
 
     setIdEtiqueta(-1)
+    
+    mostrarMensagem("Etiqueta salva!")
 
   }
 
@@ -122,6 +126,9 @@ function App() {
     setHistorias(tempArrayHistoria)
     setIdHistoria(-1)
     setIdEscolhaOriginal(-1)
+
+    mostrarMensagem("História salva!")
+
   }
 
   const handleApagarEtiqueta = () => {
@@ -131,6 +138,8 @@ function App() {
     setHistorias(historiasAtualizadas)
     setIdEtiqueta(-1)
 
+    mostrarMensagem("Etiqueta apagada!")
+
   }
 
   const handleApagarHistoria = () => {
@@ -139,6 +148,8 @@ function App() {
     setHistorias(tempHistoria)
     setIdHistoria(-1)
     setIdEscolhaOriginal(-1)
+
+    mostrarMensagem("História apagada!")
 
   }
 
@@ -175,6 +186,7 @@ function App() {
   const importedValues = (importEtiquetas, importHistorias) => {
     setEtiquetas(importEtiquetas)
     setHistorias(importHistorias)
+    mostrarMensagem("Importação realizada!")
   }
 
   function showGraficoPopUp() {
@@ -198,8 +210,23 @@ function App() {
     }
   }
 
+  function mostrarMensagem(texto){
+
+    setTextoMensagem(texto)
+    setTextoMensagemVisivel(true)
+
+  }
+
+  const colherEstado = (estado) => {
+    if(estado == true){
+      setTextoMensagemVisivel(false)
+      setTextoMensagem(null)
+    }
+  }
+
   return (
     <>
+      <Mensagem texto={textoMensagem} visivel={textoMensagemVisivel} estado={colherEstado} />
       <h1>Um Pouco de Tudo</h1>
       <button id="configButton" onClick={showConfigPopUp}>
         <img src={botaoConfig} alt="" />
