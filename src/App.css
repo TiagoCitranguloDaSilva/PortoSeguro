@@ -117,7 +117,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity .3s;
+    transition: transform .3s, opacity .3s;
 }
 
 .etiqueta:hover, .historia:hover{
