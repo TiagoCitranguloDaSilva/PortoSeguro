@@ -71,6 +71,7 @@ function Configuration({ etiquetas, historias, aoEnviar }) {
                     <div id="inputFileContainer" className="hidden">
                         <form id="formInputFile" onSubmit={(e) => submitFormInputFile(e)}>
                             <h3>Selecione o arquivo:</h3>
+                            <p>Cuidado! Dados importados substituirão todos os dados já existentes</p>
                             <input type="file" id="arquivo" required onChange={(e) => handleChangeArquivo(e)} />
                             <input type="submit" value="Importar" />
                         </form>
