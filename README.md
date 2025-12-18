@@ -1,15 +1,19 @@
 # Um Pouco De Tudo
 ![GitHub License](https://img.shields.io/github/license/TiagoCitranguloDaSilva/UmPoucoDeTudo)
 
-O objetivo do projeto é ser um diário, onde o usuário pode escrever suas histórias e catalogá-las por meio de etiquetas personalizáveis, porém não precisa ser necessariamente ser usado para contar histórias, o usuário pode usar o software como um bloco de notas também caso queira.
+O objetivo do projeto é ser um diário, onde o usuário pode escrever suas histórias e catalogá-las por meio de etiquetas personalizáveis, porém não precisa necessariamente ser usado para contar histórias, o usuário pode usar o software como um bloco de notas também caso queira.
 
 ## Acessar
-Neste repositório contém apenas a versão front-end do projeto, onde todos os dados são salvos no armazenamento local do navegador, e por ser apenas front-end, o projeto está online por meio do GitHub Pages neste link:
+Este repositório contém apenas a versão front-end do projeto, onde todos os dados são salvos no armazenamento local do navegador, e por ser apenas front-end, o projeto está online por meio do GitHub Pages neste link:
 
 [Acessar site](https://tiagocitrangulodasilva.github.io/UmPoucoDeTudo/)
 
+Caso queira ver o projeto full-stack, basta acessar este link:
+
+[Acessar site](https://www.github.com/TiagoCitranguloDaSilva/UmPoucoDeTudo_FullStack/)
+
 ## Gráfico
-No canto superior direito da página inicial há um botão que permite ver um gráfico de pizza mostrando a relação da quantidade de histórias que estão em cada etiqueta, para esse gráfico funcionar é necessário ter no mínimo 1 etiqueta contendo ao menos 1 história.
+No canto superior direito da página inicial há um botão que permite ver um gráfico de pizza mostrando a quantidade de histórias em cada etiqueta, para esse gráfico funcionar é necessário ter no mínimo uma etiqueta contendo ao menos uma história.
 
 ## Importar e exportar
 Como esse repositório contém a versão em que os dados são salvos no armazenamento local do navegador, no menu de configurações há a possibilidade de importar e exportar os dados. Ao clicar em exportar, o navegador baixará um arquivo JSON contendo as histórias e as etiquetas, porém ao clicar em importar, aparecerá um espaço para o usuário selecionar o arquivo a ser importado.
@@ -22,7 +26,7 @@ Tecnologias utilizadas:
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" height="40px"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" height="40px"/>
 </div>
-Ícones das tecnologias adquiridos em:
+Ícones das tecnologias obtidos em:
 
 [Devicon](https://devicon.dev/)
 
